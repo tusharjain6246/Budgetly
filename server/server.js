@@ -102,8 +102,6 @@ app.put('/add',(req,res)=>{
 
 });
 
-var arr =
-
-app.listen(3001,()=>{
+app.listen(port,()=>{
   console.log(`started at port 3001`);
 });
