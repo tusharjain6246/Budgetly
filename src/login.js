@@ -42,7 +42,6 @@ class Login extends React.Component {
           }
           else {
               let error;
-              let errors = [];
               error = {message: "invalid username or password"};
               this.setState({errors:this.state.errors.concat(error),load: false});
             }
@@ -77,7 +76,7 @@ class Login extends React.Component {
     // console.log(this.state.email);
     // console.log(this.state.password);
     // console.log(this.state.name);
-    if (this.state.email !== '' && this.state.password !== '' && this.state.username !== '' && this.state.id !=0) {
+    if (this.state.email !== '' && this.state.password !== '' && this.state.username !== '' && this.state.id !==0) {
       return(
         <Redirect
           to={`/App/${this.state.username}/${this.state.id}`}

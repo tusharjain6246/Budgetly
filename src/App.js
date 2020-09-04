@@ -1,8 +1,7 @@
 import React from 'react';
 import { withLastLocation } from 'react-router-last-location';
-import {Grid, Form, Segment, Button, Header, Message, Icon} from 'semantic-ui-react';
-// import New from './New';
-import ReactDOM from 'react-dom';
+import {Form, Button} from 'semantic-ui-react';
+// import ReactDOM from 'react-dom';
 
 // import logo from './logo.svg';
 import './App.css';
@@ -68,7 +67,6 @@ class App extends React.Component {
         }
         else {
             let error;
-            let errors = [];
             error = {message: "invalid username or password"};
             this.setState({errors:this.state.errors.concat(error),load: false});
           }
@@ -111,7 +109,7 @@ class App extends React.Component {
 
     }
     else {
-      var budget = parseInt(this.state.finalBudget) - parseInt(this.state.itemValue);
+      budget = parseInt(this.state.finalBudget) - parseInt(this.state.itemValue);
       var expense = parseInt(this.state.finalExpense) + parseInt(this.state.itemValue);
       this.setState({finalExpense: expense, finalBudget: budget});
       await this.setState(previousState =>({
@@ -150,7 +148,6 @@ class App extends React.Component {
           }
           else {
               let error;
-              let errors = [];
               error = {message: "email is already in use"};
               this.setState({errors:this.state.errors.concat(error),load: false});
             }
@@ -161,8 +158,7 @@ class App extends React.Component {
     };
 
         formatNumber = (num, type)=> {
-              var numSplit, int, dec, type;
-              var nums = [];
+              var numSplit, int, dec;
               for(var i in num){
                 num = num[i];
               }
@@ -206,23 +202,23 @@ class App extends React.Component {
               var budget = parseInt(this.state.finalBudget) - val;
               var income = parseInt(this.state.finalIncome) - val;
               this.setState({finalIncome: income, finalBudget: budget});
-              var b = this.state.incomeList.filter(item=>item.id !=el.id);
+              var b = this.state.incomeList.filter(item=>item.id !==parseInt(el.id));
 
               this.setState({ incomeList: b});
 
             }
             else if(el.className.includes('exp')){
-              var budget = parseInt(this.state.finalBudget) + val;
+              budget = parseInt(this.state.finalBudget) + val;
               var expense = parseInt(this.state.finalExpense) - val;
               this.setState({finalExpense: expense, finalBudget: budget});
               // var b = this.state.expenseList.filter(item=>item.description===des &&  item.value ==val);
-              var b = this.state.expenseList.filter(item=>item.id!=el.id);
+              b = this.state.expenseList.filter(item=>item.id!== parseInt(el.id));
               this.setState({expenseList: b});
             }
          }
 
   render(){
-    const {incomeList, expenseList,username,month, finalIncome, finalExpense, finalBudget, incrementOrdecrement,itemDescription,itemValue, load} = this.state;
+    const {incomeList, expenseList,username,month, finalIncome, finalExpense, finalBudget,itemDescription} = this.state;
 
     const mystyle = {
       fontSize:"25px",
