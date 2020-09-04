@@ -194,11 +194,11 @@ class App extends React.Component {
           };
           delete=event=>{
             var el = event.target.parentNode.parentNode.parentNode.parentNode;
-            // if(el.id==='inc')
+            console.log(el);
             var des = el.childNodes[0].innerText;
             var val = parseInt(el.childNodes[1].childNodes[0].innerText);
             console.log(val + " " + des);
-            console.log(el.id);
+            console.log("hey" +  el.id);
             console.log(el.className);
 
             if(el.className.includes('inc')){
@@ -215,11 +215,12 @@ class App extends React.Component {
               var budget = parseInt(this.state.finalBudget) + val;
               var expense = parseInt(this.state.finalExpense) - val;
               this.setState({finalExpense: expense, finalBudget: budget});
-              var b = this.state.expenseList.filter(item=>item.id != el.id);
-
+              // var b = this.state.expenseList.filter(item=>item.description===des &&  item.value ==val);
+              var b = this.state.expenseList.filter(item=>item.id!=el.id);
               this.setState({expenseList: b});
             }
          }
+
   render(){
     const {incomeList, expenseList,username,month, finalIncome, finalExpense, finalBudget, incrementOrdecrement,itemDescription,itemValue, load} = this.state;
 
@@ -314,7 +315,7 @@ class App extends React.Component {
                     {expenseList.length>0 &&(
                       expenseList.map(item=>{
                         return (
-                          <div  className={"item clearfix " + item.type}>
+                          <div  className={"item clearfix " + item.type} id={item.id}>
                             <div className="item__description">{item.description}</div>
                             <div className="right clearfix">
                               <div className="item__value">{item.value}</div>

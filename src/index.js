@@ -6,7 +6,7 @@ import App from './App';
 import Login from "./login";
 import Register from "./register";
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter as Router, Switch, Route, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class Root extends React.Component {
   render(){
